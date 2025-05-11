@@ -1,0 +1,21 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="course-card">
+  <div class="course-icon">
+    <i class={`fas fa-${icon}`}></i>
+  </div>
+  <h3 class="course-title">{title}</h3>
+  <p class="course-description">{description}</p>
+  <a href="/cursos" class="course-link">
+    Más información
+    <i class="fas fa-chevron-right"></i>
+  </a>
+</div>

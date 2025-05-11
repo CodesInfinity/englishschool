@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Contact from '../components/Contact.astro';
+
+const courses = [
+  {
+    title: "Cambridge English Primaria",
+    description: "Curso diseñado para niños de primaria que quieren iniciarse en el aprendizaje del inglés. Utilizamos métodos dinámicos y divertidos para que los más pequeños aprendan inglés de forma natural.",
+    level: "A1-A2",
+    duration: "Curso académico (octubre-junio)",
+    features: [
+      "Grupos reducidos",
+      "Actividades lúdicas",
+      "Material didáctico incluido",
+      "Evaluación continua"
+    ],
+    icon: "child"
+  },
+  {
+    title: "A2 Key (KET)",
+    description: "Preparación para el examen Cambridge A2 Key, que certifica un nivel básico de inglés. Este curso es ideal para estudiantes que quieren obtener su primera certificación oficial.",
+    level: "A2",
+    duration: "Curso académico (octubre-junio)",
+    features: [
+      "Preparación específica para el examen",
+      "Simulacros de examen",
+      "Material oficial de Cambridge",
+      "Tutorías personalizadas"
+    ],
+    icon: "key"
+  },
+  {
+    title: "B1 Preliminary (PET)",
+    description: "Preparación para el examen Cambridge B1 Preliminary, que certifica un nivel intermedio de inglés. Este curso es perfecto para estudiantes que necesitan acreditar un nivel B1 para estudios o trabajo.",
+    level: "B1",
+    duration: "Curso académico (octubre-junio)",
+    features: [
+      "Enfoque en las 4 destrezas: reading, writing, listening y speaking",
+      "Práctica intensiva de exámenes",
+      "Feedback personalizado",
+      "Clases de conversación"
+    ],
+    icon: "file-alt"
+  },
+  {
+    title: "B2 First (FCE)",
+    description: "Preparación para el examen Cambridge B2 First, uno de los certificados más demandados a nivel académico y profesional. Este curso te prepara para demostrar un nivel intermedio alto de inglés.",
+    level: "B2",
+    duration: "Curso académico (octubre-junio)",
+    features: [
+      "Metodología enfocada al examen",
+      "Práctica intensiva de todas las partes",
+      "Materiales actualizados",
+      "Seguimiento individualizado"
+    ],
+    icon: "award"
+  },
+  {
+    title: "C1 Advanced (CAE)",
+    description: "Preparación para el examen Cambridge C1 Advanced, que certifica un nivel avanzado de inglés. Este certificado es reconocido por universidades y empresas de todo el mundo.",
+    level: "C1",
+    duration: "Curso académico (octubre-junio)",
+    features: [
+      "Preparación exhaustiva para todas las partes del examen",
+      "Vocabulario y gramática avanzados",
+      "Técnicas específicas para superar el examen",
+      "Profesores con experiencia en preparación C1"
+    ],
+    icon: "crown"
+  },
+  {
+    title: "Curso Intensivo Multinivel",
+    description: "Curso intensivo diseñado para mejorar rápidamente tu nivel de inglés en un corto periodo de tiempo. Adaptado a diferentes niveles, desde principiante hasta avanzado.",
+    level: "A1-C1",
+    duration: "1-3 meses (verano o según demanda)",
+    features: [
+      "Clases diarias",
+      "Grupos reducidos por nivel",
+      "Enfoque comunicativo",
+      "Progreso rápido y efectivo"
+    ],
+    icon: "bolt"
+  }
+];
+---
+
+<Layout title="Cursos - English School Huelva" description="Descubre todos los cursos de inglés que ofrecemos en English School Huelva">
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Nuestros Cursos</h1>
+      <p class="page-description">
+        Ofrecemos una amplia variedad de cursos adaptados a diferentes niveles y necesidades. Todos nuestros cursos están diseñados para ayudarte a alcanzar tus objetivos de aprendizaje.
+      </p>
+    </div>
+  </div>
+  
+  <section class="section">
+    <div class="container">
+      <div>
+        {courses.map((course, index) => (
+          <div class="course-detail">
+            <div class="course-detail-grid">
+              <div class="course-detail-sidebar">
+                <div class="course-detail-icon">
+                  <i class={`fas fa-${course.icon}`}></i>
+                </div>
+                <h3 class="course-detail-title">{course.title}</h3>
+                <div>
+                  <span class="course-detail-badge">
+                    Nivel: {course.level}
+                  </span>
+                  <p class="course-detail-duration">
+                    Duración: {course.duration}
+                  </p>
+                </div>
+              </div>
+              
+              <div class="course-detail-content">
+                <p class="course-detail-description">{course.description}</p>
+                
+                <h4 class="course-detail-features-title">Características del curso:</h4>
+                <ul class="course-detail-features-list">
+                  {course.features.map(feature => (
+                    <li class="course-detail-feature">
+                      <i class="fas fa-check-circle"></i>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <a href="#contact" class="btn btn-primary">
+                  Solicitar información
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <section class="courses-cta-section">
+    <div class="container">
+      <h2 class="courses-cta-title">¿No encuentras lo que buscas?</h2>
+      <p class="courses-cta-text">
+        También ofrecemos cursos personalizados adaptados a tus necesidades específicas. Contáctanos para más información.
+      </p>
+      <a href="#contact" class="btn btn-primary">Contactar ahora</a>
+    </div>
+  </section>
+  
+  <Contact />
+</Layout>

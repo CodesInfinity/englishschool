@@ -1,0 +1,57 @@
+---
+import CourseCard from './CourseCard.astro';
+
+const courses = [
+  {
+    title: "Cambridge English Primaria",
+    description: "Curso diseñado para niños de primaria que quieren iniciarse en el aprendizaje del inglés.",
+    icon: "book-open"
+  },
+  {
+    title: "A2 Key",
+    description: "Preparación para el examen Cambridge A2 Key (KET), nivel básico de inglés.",
+    icon: "key"
+  },
+  {
+    title: "B1 Preliminary",
+    description: "Preparación para el examen Cambridge B1 Preliminary (PET), nivel intermedio.",
+    icon: "award"
+  },
+  {
+    title: "B2 First",
+    description: "Preparación para el examen Cambridge B2 First (FCE), nivel intermedio alto.",
+    icon: "award"
+  },
+  {
+    title: "C1 Advanced",
+    description: "Preparación para el examen Cambridge C1 Advanced (CAE), nivel avanzado.",
+    icon: "award"
+  },
+  {
+    title: "Curso Intensivo Multinivel",
+    description: "Curso intensivo para mejorar rápidamente tu nivel de inglés, adaptado a diferentes niveles.",
+    icon: "bolt"
+  }
+];
+---
+
+<section id="courses" class="section courses">
+  <div class="container">
+    <h2 class="section-title">Nuestros Cursos</h2>
+    <p class="section-description">Ofrecemos una variedad de cursos adaptados a tus necesidades y nivel de inglés.</p>
+    
+    <div class="courses-grid">
+      {courses.map(course => (
+        <CourseCard 
+          title={course.title} 
+          description={course.description} 
+          icon={course.icon} 
+        />
+      ))}
+    </div>
+    
+    <div class="courses-cta">
+      <a href="/cursos" class="btn btn-primary">Ver todos los cursos</a>
+    </div>
+  </div>
+</section>

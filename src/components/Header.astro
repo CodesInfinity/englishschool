@@ -1,0 +1,79 @@
+---
+const navItems = [
+  { name: "Inicio", url: "/" },
+  { name: "Sobre Nosotros", url: "/#about" },
+  { name: "Cursos", url: "/#courses" },
+  { name: "Contacto", url: "/#contact" }
+];
+---
+
+<header class="header">
+  <div class="container header-container">
+    <a href="/" class="logo">
+      <img src="/images/logo.svg" alt="English School Huelva Logo" />
+    </a>
+    
+    <nav class="nav">
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li>
+            <a href={item.url} class="nav-link">{item.name}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <button id="mobile-menu-button" class="hamburger-menu" aria-label="Menú">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+  
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="container">
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li>
+            <a href={item.url} class="nav-link">{item.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
+    const mobileMenu = document.getElementById('mobile-menu') as HTMLDivElement | null;
+    const body = document.body;
+    
+    if (hamburgerButton && mobileMenu) {
+      hamburgerButton.addEventListener('click', () => {
+        hamburgerButton.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        body.classList.toggle('menu-open'); // Prevenir scroll cuando el menú está abierto
+      });
+      
+      // Cerrar menú al hacer clic en un enlace
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburgerButton.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          body.classList.remove('menu-open');
+        });
+      });
+    }
+    
+    // Cerrar menú al redimensionar la ventana a un tamaño de escritorio
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 992 && mobileMenu && mobileMenu.classList.contains('active') && hamburgerButton) {
+        hamburgerButton.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        body.classList.remove('menu-open');
+      }
+    });
+  });
+</script>

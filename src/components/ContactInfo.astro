@@ -1,0 +1,131 @@
+---
+const contactInfo = [
+  {
+    icon: "fa-location-dot",
+    title: "Dirección",
+    content: "English School, Huelva, España",
+    link: "https://www.google.com/maps/place/English+School/@37.2583855,-6.9341223,1483m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd11d01b0aedeb79:0xc7792989ba6dd1cf!8m2!3d37.2583855!4d-6.9341223!16s%2Fg%2F11b7xq3y_9?hl=es&entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoASAFQAw%3D%3D",
+    isMap: true
+  },
+  {
+    icon: "fa-phone",
+    title: "Teléfono",
+    content: "+34 959 123 456",
+    link: "tel:+34959123456"
+  },
+  {
+    icon: "fa-whatsapp",
+    title: "WhatsApp",
+    content: "+34 640 37 09 54",
+    link: "https://wa.me/34640370954",
+    isExternal: true
+  },
+  {
+    icon: "fa-envelope",
+    title: "Email",
+    content: "huelva.idiomas@gmail.com",
+    link: "mailto:huelva.idiomas@gmail.com"
+  },
+  {
+    icon: "fa-instagram",
+    title: "Instagram",
+    content: "@englishschoolhuelva",
+    link: "https://instagram.com/englishschoolhuelva",
+    isExternal: true
+  },
+  {
+    icon: "fa-clock",
+    title: "Horario",
+    content: "Lunes a Viernes: 16:00 - 20:30",
+    noLink: true
+  }
+];
+
+---
+
+<div class="contact-info">
+  <h3>Información de Contacto</h3>
+  
+  {contactInfo.map(item => (
+    <div class="contact-item">
+      <div class="contact-icon">
+        <i class={`${item.icon.startsWith('fa-whatsapp') || item.icon.startsWith('fa-instagram') ? 'fab' : 'fas'} ${item.icon}`}></i>
+      </div>
+      <div class="contact-item-content">
+        <h4>{item.title}</h4>
+        {item.noLink ? (
+          <p>{item.content}</p>
+        ) : (
+          <a 
+            href={item.link} 
+            target={item.isMap || item.isExternal ? "_blank" : undefined} 
+            rel={item.isMap || item.isExternal ? "noopener noreferrer" : undefined}
+          >
+            {item.content}
+            {item.isExternal && <i class="fas fa-external-link-alt external-icon"></i>}
+          </a>
+        )}
+      </div>
+    </div>
+  ))}
+  
+</div>
+
+<style>
+  .contact-info {
+    background-color: var(--color-white);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(42, 45, 126, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-icon i {
+    color: var(--color-primary);
+  }
+
+  .contact-item-content h4 {
+    font-weight: 500;
+    color: var(--color-gray-800);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-item-content a {
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-item-content a:hover {
+    color: var(--color-secondary);
+  }
+
+  .external-icon {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    opacity: 0.7;
+  }
+
+</style>
